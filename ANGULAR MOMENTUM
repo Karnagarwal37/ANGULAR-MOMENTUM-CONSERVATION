@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+// Function to calculate final angular velocity assuming conservation of angular momentum
+double calculate_final_angular_velocity(double I1, double omega1, double I2, double omega2) {
+    // Calculate total initial angular momentum
+    double initial_angular_momentum = (I1 * omega1) + (I2 * omega2);
+    
+    // Calculate total moment of inertia after collision
+    double total_moment_of_inertia = I1 + I2;
+    
+    // Final angular velocity (assuming they stick together)
+    double omega_final = initial_angular_momentum / total_moment_of_inertia;
+    
+    return omega_final;
+}
+
+int main() {
+    double I1, omega1, I2, omega2;
+    
+    // User input for initial moment of inertia and angular velocity of both bodies
+    printf("Enter the moment of inertia (I1) and angular velocity (omega1) of first body:\n");
+    scanf("%lf %lf", &I1, &omega1);
+    
+    printf("Enter the moment of inertia (I2) and angular velocity (omega2) of second body:\n");
+    scanf("%lf %lf", &I2, &omega2);
+    
+    // Calculate final angular velocity after collision
+    double omega_final = calculate_final_angular_velocity(I1, omega1, I2, omega2);
+    
+    printf("Final angular velocity after collision (assuming they stick together): %.2f rad/s\n", omega_final);
+    
+    return 0;
+}
