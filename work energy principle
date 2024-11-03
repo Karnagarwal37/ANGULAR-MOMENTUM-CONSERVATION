@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <math.h>
+
+double final_velocity(double work, double mass, double initial_velocity) {
+    return sqrt((2 * work / mass) + (initial_velocity * initial_velocity));
+}
+
+int main() {
+    double work, mass, initial_velocity, v_f;
+
+    // Input values for work, mass, and initial velocity
+    printf("Enter the work done on the particle (in Joules): ");
+    scanf("%lf", &work);
+
+    printf("Enter the mass of the particle (in kg): ");
+    scanf("%lf", &mass);
+
+    printf("Enter the initial velocity of the particle (in m/s): ");
+    scanf("%lf", &initial_velocity);
+
+    // Calculate final velocity
+    v_f = final_velocity(work, mass, initial_velocity);
+
+    // Output the result
+    printf("The final velocity of the particle is: %.2f m/s\n", v_f);
+
+    return 0;
+}
