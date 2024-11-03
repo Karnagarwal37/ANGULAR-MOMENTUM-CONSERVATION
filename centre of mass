@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+// Structure to store the mass and coordinates of each point
+struct Point {
+    float x;
+    float y;
+    float mass;
+};
+
+// Function to calculate the center of mass
+void calculateCenterOfMass(struct Point points[], int n, float *centerX, float *centerY) {
+    float totalMass = 0.0;
+    float weightedSumX = 0.0;
+    float weightedSumY = 0.0;
+
+    // Sum up the mass and weighted coordinates
+    for (int i = 0; i < n; i++) {
+        totalMass += points[i].mass;
+        weightedSumX += points[i].x * points[i].mass;
+        weightedSumY += points[i].y * points[i].mass;
+    }
+
+    // Calculate the center of mass coordinates
+    *centerX = weightedSumX / totalMass;
+    *centerY = weightedSumY / totalMass;
+}
+
+int main() {
+    int n;
+
+    // Get the number of points
+    printf("Enter the number of points: ");
+    scanf("%d", &n);
+
+    struct Point points[n];
+
+    // Get the coordinates and mass for each point
+    for (int i = 0; i < n; i++) {
+        printf("Enter x, y coordinates and mass of point %d: ", i + 1);
+        scanf("%f %f %f", &points[i].x, &points[i].y, &points[i].mass);
+    }
+
+    float centerX, centerY;
+    calculateCenterOfMass(points, n, &centerX, &centerY);
+
+    // Print the result
+    printf("Center of Mass: (%.2f, %.2f)\n", centerX, centerY);
+
+    return 0;
+}
