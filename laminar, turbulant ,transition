@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int main() {
+    double density, velocity, diameter, viscosity, reynoldsNumber;
+
+    // Input values
+    printf("Enter the fluid density (kg/m^3): ");
+    scanf("%lf", &density);
+    printf("Enter the fluid velocity (m/s): ");
+    scanf("%lf", &velocity);
+    printf("Enter the characteristic diameter (m): ");
+    scanf("%lf", &diameter);
+    printf("Enter the dynamic viscosity (Pa.s): ");
+    scanf("%lf", &viscosity);
+
+    // Calculate Reynolds number
+    reynoldsNumber = (density * velocity * diameter) / viscosity;
+
+    // Display Reynolds number
+    printf("Reynolds Number: %.2f\n", reynoldsNumber);
+
+    // Determine flow type
+    if (reynoldsNumber < 2000) {
+        printf("The flow is Laminar.\n");
+    } else if (reynoldsNumber >= 2000 && reynoldsNumber <= 4000) {
+        printf("The flow is in the Transition region.\n");
+    } else {
+        printf("The flow is Turbulent.\n");
+    }
+
+    return 0;
+}
